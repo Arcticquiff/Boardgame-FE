@@ -12,8 +12,9 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [category, setCategory] = useState('all');
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   useEffect(() => { }, [currentUser])
-  useEffect(() => getReviews(category, setReviews, page), [category, setReviews, page])
+  useEffect(() => getReviews(category, setReviews, page, setLoading), [category, setReviews, page])
   return (
     <div className="App">
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
@@ -21,7 +22,7 @@ function App() {
         <NavBar setCategory={setCategory} />
         <Switch>
           <Route exact path="/">
-            <ReviewDisplay reviews={reviews} />
+            {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} />}
           </Route>
         </Switch>
       </main>

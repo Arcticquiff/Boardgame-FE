@@ -20,15 +20,17 @@ helperFunctions.logout = async (event, setCurrentUser, setLoggedIn) => {
     setCurrentUser({});
     setLoggedIn(false);
 };
-helperFunctions.getReviews = async (category, setReviews, page) => {
+helperFunctions.getReviews = async (category, setReviews, page, setLoading) => {
+    setLoading(true);
     let requestString = `/reviews?page=${page}&limit=5`
     if (category !== 'all') requestString += `&category=${category}`;
     try {
         const reviews = await gameApi.get(requestString);
         console.log(reviews.data.reviews);
         setReviews(reviews.data.reviews);
+        setLoading(false);
     } catch {
-
+        setLoading(false);
     }
 }
 export default helperFunctions;
