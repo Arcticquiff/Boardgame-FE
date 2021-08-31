@@ -18,14 +18,16 @@ function App() {
   return (
     <div className="App">
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <main id="navBarAndReviewDisplay">
+      {loggedIn ? <main id="navBarAndReviewDisplay">
         <NavBar setCategory={setCategory} />
         <Switch>
           <Route exact path="/">
             {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} />}
           </Route>
         </Switch>
-      </main>
+      </main> : <main>
+        <p id="loggedOutText"><span id="boldStart">Hey welcome to BoardGamiacs,</span> home of reviews for games that you've never even heard of! Don't google them though, you'll challenge the whole legitimacy if this website. If you don't know or have a username to log in, feel free to use "tickle122", don't hold it against me, I didn't generate the names.</p>
+      </main>}
     </div>
   );
 }
