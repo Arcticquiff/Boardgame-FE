@@ -1,15 +1,31 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
+import subComponents from './SubComponents/SubComponentExporter'
+const { AddReviewPage } = subComponents;
 
-const NavBar = ({ setCategory }) => {
+const NavBar = ({ setCategory, currentUser }) => {
     const [displayCategorySelector, setDisplayCategorySelector] = useState(false);
+    const [displayAddReview, setDisplayAddReview] = useState(false);
+    const [addReviewLoading, setAddReviewLoading] = useState(false);
+    const [addReviewSuccess, setAddReviewSuccess] = useState(false);
+    const [addReviewFail, setAddReviewFail] = useState(false);
     return (
         <nav>
-            <Link to="/addReviewPage" >Add a review</Link>
+            <Link to="/">Home</Link>
+            <p id="addReviewDisplayer" onClick={
+                () => {
+                    setAddReviewSuccess(false);
+                    setAddReviewFail(false);
+                    setDisplayAddReview(current => !current);
+                }
+            }>Add a review</p>
+            {addReviewLoading ?
+                <p>submitting review...</p> :
+                displayAddReview && <AddReviewPage currentUser={currentUser} setAddReviewLoading={setAddReviewLoading} setDisplayAddReview={setDisplayAddReview} setAddReviewFail={setAddReviewFail} setAddReviewSuccess={setAddReviewSuccess} />}
+            {addReviewSuccess && <p>Great! thanks for your review</p>}
+            {addReviewFail && <p>oops someone knocked the board over, try again</p>}
             <p id="categoryDisplayer" onClick={
-                displayCategorySelector ?
-                    () => setDisplayCategorySelector(false) :
-                    () => setDisplayCategorySelector(true)
+                () => setDisplayCategorySelector(current => !current)
             }>Categories</p>
             {displayCategorySelector && <div id="categorySelect">
                 <Link to="/"><p onClick={() => setCategory('all')} value="all">All</p></Link>
@@ -21,7 +37,6 @@ const NavBar = ({ setCategory }) => {
                 <Link to="/"><p onClick={() => setCategory('deck-building')} value="deck-building">Deck building</p></Link>
                 <Link to="/"><p onClick={() => setCategory('engine-building')} value="engine-building">Engine building</p></Link>
             </div>}
-
         </nav>
     );
 };

@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       {loggedIn ? <main id="navBarAndReviewDisplay">
-        <NavBar setCategory={setCategory} />
+        <NavBar setCategory={setCategory} currentUser={currentUser} />
         <Switch>
           <Route exact path="/">
             {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} />}
@@ -29,6 +29,6 @@ function App() {
       </main>}
     </div>
   );
-}
+};
 
 export default App;

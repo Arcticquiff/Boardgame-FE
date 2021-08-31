@@ -33,4 +33,21 @@ helperFunctions.getReviews = async (category, setReviews, page, setLoading) => {
         setLoading(false);
     }
 }
+helperFunctions.addNewReview = async (event, newReviewTitle, newReviewBody, newReviewDesigner, newReviewCategory, currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess) => {
+    event.preventDefault();
+    setAddReviewLoading(true);
+    const newReview = {
+        owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory
+    };
+    try {
+        const responseReview = await gameApi.post('/reviews', newReview);
+        console.log(responseReview.data);
+        setAddReviewLoading(false);
+        setDisplayAddReview(false);
+        setAddReviewSuccess(true);
+    } catch (err) {
+        setAddReviewLoading(false);
+        setAddReviewFail(true);
+    };
+};
 export default helperFunctions;
