@@ -21,7 +21,7 @@ function App() {
         <NavBar setCategory={setCategory} currentUser={currentUser} />
         <Switch>
           <Route exact path="/">
-            {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} />}
+            {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} currentUser={currentUser} category={category} setReviews={setReviews} setLoading={setLoading} />}
           </Route>
         </Switch>
       </main> : <main>

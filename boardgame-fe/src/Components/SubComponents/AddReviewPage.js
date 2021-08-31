@@ -10,17 +10,17 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
     return (
         <form onSubmit={event => addNewReview(event, newReviewTitle, newReviewBody, newReviewDesigner, newReviewCategory, currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess)}>
             <label htmlFor="newReviewTitle">What's your review called?</label>
-            <input type="text" id="newReviewTitle" name="newReviewTitle" value={newReviewTitle} onChange={event => setNewReviewTitle(event.target.value)} />
+            <input type="text" id="newReviewTitle" name="newReviewTitle" value={newReviewTitle} onChange={event => setNewReviewTitle(event.target.value)} required />
             <br />
             <label htmlFor="newReviewBody">So.... how was it?</label>
             <br />
-            <textarea id="newReviewBody" name="newReviewBody" rows="5" cols="30" value={newReviewBody} onChange={event => setNewReviewBody(event.target.value)} />
+            <textarea id="newReviewBody" name="newReviewBody" rows="5" cols="30" value={newReviewBody} onChange={event => setNewReviewBody(event.target.value)} required />
             <br />
             <label htmlFor="newReviewDesigner">And who made the game?</label>
-            <input type="text" id="newReviewDesigner" name="newReviewDesigner" value={newReviewDesigner} onChange={event => setNewReviewDesigner(event.target.value)} />
+            <input type="text" id="newReviewDesigner" name="newReviewDesigner" value={newReviewDesigner} onChange={event => setNewReviewDesigner(event.target.value)} required />
             <br />
             <label htmlFor="newReviewCategory">Lastly, which category best fits this game?</label>
-            <select name="newReviewCategory" id="newReviewCategory" value={newReviewCategory} onChange={event => setNewReviewCategory(event.target.value)}>
+            <select name="newReviewCategory" id="newReviewCategory" value={newReviewCategory} onChange={event => setNewReviewCategory(event.target.value)} required>
                 <option value="">choose a category</option>
                 <option value="strategy">Strategy</option>
                 <option value="hidden-roles">Hidden roles</option>

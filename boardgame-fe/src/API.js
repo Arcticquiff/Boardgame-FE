@@ -46,8 +46,18 @@ helperFunctions.addNewReview = async (event, newReviewTitle, newReviewBody, newR
         setDisplayAddReview(false);
         setAddReviewSuccess(true);
     } catch (err) {
+        console.log(err.response);
         setAddReviewLoading(false);
         setAddReviewFail(true);
     };
+};
+helperFunctions.deleteReview = async (event, review_id, category, setReviews, page, setLoading) => {
+    event.preventDefault();
+    try {
+        await gameApi.delete(`/reviews/${review_id}`);
+        helperFunctions.getReviews(category, setReviews, page, setLoading);
+    } catch (err) {
+        console.log(err.response);
+    }
 };
 export default helperFunctions;
