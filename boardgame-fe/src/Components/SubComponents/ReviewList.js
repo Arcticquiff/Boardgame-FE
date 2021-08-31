@@ -1,4 +1,5 @@
 import functions from '../../API'
+import '../../Styles/reviewList.css'
 const { deleteReview } = functions;
 
 const ReviewList = ({ reviews, currentUser, category, setReviews, page, setLoading }) => {
