@@ -13,7 +13,6 @@ function App() {
   const [category, setCategory] = useState('all');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  useEffect(() => { }, [currentUser])
   useEffect(() => getReviews(category, setReviews, page, setLoading), [category, setReviews, page])
   return (
     <div className="App">
