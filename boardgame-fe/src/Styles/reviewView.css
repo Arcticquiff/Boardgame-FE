@@ -1,0 +1,8 @@
+#reviewPicture {
+    height: 100px;
+    width: 100px;
+}
+.comments {
+    list-style: none;
+    padding: 0;
+}

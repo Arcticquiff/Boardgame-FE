@@ -12,6 +12,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [viewingReview, setViewingReview] = useState({});
+  const [reviewComments, setReviewComments] = useState([]);
   useEffect(() => getReviews(category, setReviews, page, setLoading), [category, setReviews, page])
   return (
     <div className="App">
@@ -20,10 +21,10 @@ function App() {
         <NavBar setCategory={setCategory} currentUser={currentUser} />
         <Switch>
           <Route exact path="/">
-            {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} currentUser={currentUser} category={category} setReviews={setReviews} setLoading={setLoading} setViewingReview={setViewingReview} />}
+            {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} currentUser={currentUser} category={category} setReviews={setReviews} setLoading={setLoading} setViewingReview={setViewingReview} setReviewComments={setReviewComments} />}
           </Route>
           <Route exact path="/viewFullReview">
-            {loading ? <p>loading...</p> : <ViewFullReview viewingReview={viewingReview} />}
+            {loading ? <p>loading...</p> : <ViewFullReview viewingReview={viewingReview} reviewComments={reviewComments} setReviewComments={setReviewComments} currentUser={currentUser} />}
           </Route>
         </Switch>
       </main> : <main>
