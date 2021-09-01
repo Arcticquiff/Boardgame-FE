@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
-import subComponents from './SubComponents/SubComponentExporter'
-const { AddReviewPage } = subComponents;
+import { AddReviewPage } from './SubComponents/SubComponentExporter'
 
 const NavBar = ({ setCategory, currentUser }) => {
     const [displayCategorySelector, setDisplayCategorySelector] = useState(false);

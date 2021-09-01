@@ -1,6 +1,6 @@
 import Header from "./Header";
 import NavBar from "./NavBar";
 import ReviewDisplay from './ReviewDisplay';
+import ViewFullReview from "./ViewFullReview";
 
-const components = { Header, NavBar, ReviewDisplay };
-export default components;
+export { Header, NavBar, ReviewDisplay, ViewFullReview };

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import functions from '../../API'
-const { addNewReview } = functions
+import { addNewReview } from '../../API'
 
 const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess }) => {
     const [newReviewTitle, setNewReviewTitle] = useState('');

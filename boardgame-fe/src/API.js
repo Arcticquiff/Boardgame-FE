@@ -1,9 +1,8 @@
 import axios from 'axios';
-const helperFunctions = {};
 
 const gameApi = axios.create({ baseURL: 'https://tp-boardgame-api.herokuapp.com/api' });
 
-helperFunctions.login = async (event, username, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound) => {
+const login = async (event, username, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound) => {
     event.preventDefault();
     setUserNotFound(false);
     try {
@@ -15,12 +14,12 @@ helperFunctions.login = async (event, username, setCurrentUser, setNewUser, setL
         setUserNotFound(true);
     };
 };
-helperFunctions.logout = async (event, setCurrentUser, setLoggedIn) => {
+const logout = async (event, setCurrentUser, setLoggedIn) => {
     event.preventDefault();
     setCurrentUser({});
     setLoggedIn(false);
 };
-helperFunctions.getReviews = async (category, setReviews, page, setLoading) => {
+const getReviews = async (category, setReviews, page, setLoading) => {
     setLoading(true);
     let requestString = `/reviews?page=${page}&limit=5`
     if (category !== 'all') requestString += `&category=${category}`;
@@ -33,7 +32,7 @@ helperFunctions.getReviews = async (category, setReviews, page, setLoading) => {
         setLoading(false);
     }
 }
-helperFunctions.addNewReview = async (event, newReviewTitle, newReviewBody, newReviewDesigner, newReviewCategory, currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess) => {
+const addNewReview = async (event, newReviewTitle, newReviewBody, newReviewDesigner, newReviewCategory, currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess) => {
     event.preventDefault();
     setAddReviewLoading(true);
     const newReview = {
@@ -51,13 +50,16 @@ helperFunctions.addNewReview = async (event, newReviewTitle, newReviewBody, newR
         setAddReviewFail(true);
     };
 };
-helperFunctions.deleteReview = async (event, review_id, category, setReviews, page, setLoading) => {
+const deleteReview = async (event, review_id, category, setReviews, page, setLoading) => {
     event.preventDefault();
     try {
         await gameApi.delete(`/reviews/${review_id}`);
-        helperFunctions.getReviews(category, setReviews, page, setLoading);
+        getReviews(category, setReviews, page, setLoading);
     } catch (err) {
         console.log(err.response);
     }
 };
-export default helperFunctions;
+const viewReview = async (event, review_id) => {
+    event.preventDefault();
+};
+export { login, logout, getReviews, addNewReview, deleteReview, viewReview };

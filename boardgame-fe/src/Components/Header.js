@@ -1,7 +1,6 @@
 import { useState } from "react";
-import functions from '../API';
+import { login, logout } from '../API';
 import '../Styles/header.css'
-const { login, logout } = functions;
 
 const Header = ({ currentUser, setCurrentUser, loggedIn, setLoggedIn }) => {
     const [newUser, setNewUser] = useState('');
