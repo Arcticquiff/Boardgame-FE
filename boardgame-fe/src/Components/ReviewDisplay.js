@@ -1,13 +1,11 @@
 import { ReviewList } from "./SubComponents/SubComponentExporter";
 
-const ReviewDisplay = ({ reviews, page, setPage, currentUser, category, setReviews, setLoading, setViewingReview, setReviewComments }) => {
+const ReviewDisplay = ({ reviews, page, setPage, currentUser, category, setReviews, setLoading, setViewingReview, setReviewComments, totalReviews }) => {
     return (
         <section className="reviewDisplay">
             <ReviewList reviews={reviews} currentUser={currentUser} page={page} category={category} setReviews={setReviews} setLoading={setLoading} setViewingReview={setViewingReview} setReviewComments={setReviewComments} />
-            {page === 1 ?
-                <p>previous</p> :
-                <p onClick={() => setPage(page => page - 1)}>previous</p>}
-            <p onClick={() => setPage(page => page + 1)}>next</p>
+            <button onClick={() => setPage(page => page - 1)} disabled={page === 1 ? true : false}>previous</button>
+            <button onClick={() => setPage(page => page + 1)} disabled={(page * 5) >= totalReviews ? true : false}>next</button>
         </section>
     );
 };

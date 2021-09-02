@@ -19,25 +19,23 @@ const logout = async (event, setCurrentUser, setLoggedIn) => {
     setCurrentUser({});
     setLoggedIn(false);
 };
-const getReviews = async (category, setReviews, page, setLoading) => {
+const getReviews = async (category, setReviews, page, setLoading, setTotalReviews) => {
     setLoading(true);
     let requestString = `/reviews?page=${page}&limit=5`
     if (category !== 'all') requestString += `&category=${category}`;
     try {
         const reviews = await gameApi.get(requestString);
         console.log(reviews.data.reviews);
+        setTotalReviews(reviews.data.total_count);
         setReviews(reviews.data.reviews);
         setLoading(false);
     } catch {
         setLoading(false);
     }
 }
-const addNewReview = async (event, newReviewTitle, newReviewBody, newReviewDesigner, newReviewCategory, currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess) => {
+const addNewReview = async (event, newReview, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess) => {
     event.preventDefault();
     setAddReviewLoading(true);
-    const newReview = {
-        owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory
-    };
     try {
         const responseReview = await gameApi.post('/reviews', newReview);
         console.log(responseReview.data);

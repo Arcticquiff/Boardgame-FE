@@ -13,7 +13,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [viewingReview, setViewingReview] = useState({});
   const [reviewComments, setReviewComments] = useState([]);
-  useEffect(() => getReviews(category, setReviews, page, setLoading), [category, setReviews, page])
+  const [totalReviews, setTotalReviews] = useState(0);
+  useEffect(() => getReviews(category, setReviews, page, setLoading, setTotalReviews), [category, page])
   return (
     <div className="App">
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
@@ -21,7 +22,7 @@ function App() {
         <NavBar setCategory={setCategory} currentUser={currentUser} />
         <Switch>
           <Route exact path="/">
-            {loading ? <p>loading...</p> : <ReviewDisplay reviews={reviews} page={page} setPage={setPage} currentUser={currentUser} category={category} setReviews={setReviews} setLoading={setLoading} setViewingReview={setViewingReview} setReviewComments={setReviewComments} />}
+            {loading ? <p>loading...</p> : <ReviewDisplay totalReviews={totalReviews} reviews={reviews} page={page} setPage={setPage} currentUser={currentUser} category={category} setReviews={setReviews} setLoading={setLoading} setViewingReview={setViewingReview} setReviewComments={setReviewComments} />}
           </Route>
           <Route exact path="/viewFullReview">
             {loading ? <p>loading...</p> : <ViewFullReview viewingReview={viewingReview} reviewComments={reviewComments} setReviewComments={setReviewComments} currentUser={currentUser} />}

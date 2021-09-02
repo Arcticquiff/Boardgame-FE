@@ -8,6 +8,9 @@ body {
   background-color: #faae7b;
   color: #432371;
 }
+body, html {
+  overflow-x: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

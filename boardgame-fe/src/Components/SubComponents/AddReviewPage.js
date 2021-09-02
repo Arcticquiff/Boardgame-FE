@@ -7,7 +7,12 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
     const [newReviewDesigner, setNewReviewDesigner] = useState('');
     const [newReviewCategory, setNewReviewCategory] = useState('');
     return (
-        <form onSubmit={event => addNewReview(event, newReviewTitle, newReviewBody, newReviewDesigner, newReviewCategory, currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess)}>
+        <form onSubmit={event => {
+            const newReview = {
+                owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory
+            };
+            addNewReview(event, newReview, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess)
+        }}>
             <label htmlFor="newReviewTitle">What's your review called?</label>
             <input type="text" id="newReviewTitle" name="newReviewTitle" value={newReviewTitle} onChange={event => setNewReviewTitle(event.target.value)} required />
             <br />

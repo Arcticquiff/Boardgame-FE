@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { login, logout } from '../API';
 import '../Styles/header.css'
 
@@ -7,7 +8,7 @@ const Header = ({ currentUser, setCurrentUser, loggedIn, setLoggedIn }) => {
     const [userNotFound, setUserNotFound] = useState(false);
     return (
         <header id="titleAndLogin">
-            <h1>Boardgamiacs</h1>
+            <Link to="/"><h1>Boardgamiacs</h1></Link>
             <form id="loginForm" onSubmit={loggedIn ?
                 event => logout(event, setCurrentUser, setLoggedIn) :
                 event => login(event, newUser, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound)}>

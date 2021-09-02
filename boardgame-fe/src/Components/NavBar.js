@@ -10,7 +10,6 @@ const NavBar = ({ setCategory, currentUser }) => {
     const [addReviewFail, setAddReviewFail] = useState(false);
     return (
         <nav>
-            <Link to="/">Home</Link>
             <p id="addReviewDisplayer" onClick={
                 () => {
                     setAddReviewSuccess(false);
