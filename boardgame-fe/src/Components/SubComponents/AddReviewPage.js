@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { addNewReview } from '../../API'
 
-const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess }) => {
+const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess, setReviews, setLoading, page, category }) => {
     const [newReviewTitle, setNewReviewTitle] = useState('');
     const [newReviewBody, setNewReviewBody] = useState('');
     const [newReviewDesigner, setNewReviewDesigner] = useState('');
@@ -11,7 +11,7 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
             const newReview = {
                 owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory
             };
-            addNewReview(event, newReview, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess)
+            addNewReview(event, newReview, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess, setReviews, setLoading, page, category)
         }}>
             <label htmlFor="newReviewTitle">What's your review called?</label>
             <br />

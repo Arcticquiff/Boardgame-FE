@@ -17,9 +17,19 @@ function App() {
   useEffect(() => getReviews(category, setReviews, page, setLoading, setTotalReviews), [category, page])
   return (
     <div className="App">
-      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Header
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn} />
       {loggedIn ? <main id="navBarAndReviewDisplay">
-        <NavBar setCategory={setCategory} currentUser={currentUser} />
+        <NavBar
+          setCategory={setCategory}
+          currentUser={currentUser}
+          setReviews={setReviews}
+          setLoading={setLoading}
+          page={page}
+          category={category} />
         <Switch>
           <Route exact path="/">
             {loading ? <p>loading...</p> :

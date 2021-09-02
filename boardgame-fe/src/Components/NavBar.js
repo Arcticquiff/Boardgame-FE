@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AddReviewPage } from './SubComponents/SubComponentExporter'
 
-const NavBar = ({ setCategory, currentUser }) => {
+const NavBar = ({ setCategory, currentUser, setReviews, setLoading, page, category }) => {
     const [displayCategorySelector, setDisplayCategorySelector] = useState(false);
     const [displayAddReview, setDisplayAddReview] = useState(false);
     const [addReviewLoading, setAddReviewLoading] = useState(false);
@@ -19,7 +19,17 @@ const NavBar = ({ setCategory, currentUser }) => {
             }>Add a review</p>
             {addReviewLoading ?
                 <p>submitting review...</p> :
-                displayAddReview && <AddReviewPage currentUser={currentUser} setAddReviewLoading={setAddReviewLoading} setDisplayAddReview={setDisplayAddReview} setAddReviewFail={setAddReviewFail} setAddReviewSuccess={setAddReviewSuccess} />}
+                displayAddReview &&
+                <AddReviewPage
+                    currentUser={currentUser}
+                    setAddReviewLoading={setAddReviewLoading}
+                    setDisplayAddReview={setDisplayAddReview}
+                    setAddReviewFail={setAddReviewFail}
+                    setAddReviewSuccess={setAddReviewSuccess}
+                    setReviews={setReviews}
+                    setLoading={setLoading}
+                    page={page}
+                    category={category} />}
             {addReviewSuccess && <p>Great! thanks for your review</p>}
             {addReviewFail && <p>oops someone knocked the board over, try again</p>}
             <p id="categoryDisplayer" onClick={
