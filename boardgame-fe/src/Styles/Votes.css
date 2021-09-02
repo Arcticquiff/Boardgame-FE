@@ -1,0 +1,7 @@
+#reviewVoteBox{
+    display: flex;
+    justify-content: space-evenly;
+}
+.thumb:hover {
+    cursor: pointer;
+}

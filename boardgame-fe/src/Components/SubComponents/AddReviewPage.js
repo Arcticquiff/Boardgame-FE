@@ -14,6 +14,7 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
             addNewReview(event, newReview, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess)
         }}>
             <label htmlFor="newReviewTitle">What's your review called?</label>
+            <br />
             <input type="text" id="newReviewTitle" name="newReviewTitle" value={newReviewTitle} onChange={event => setNewReviewTitle(event.target.value)} required />
             <br />
             <label htmlFor="newReviewBody">So.... how was it?</label>
@@ -21,9 +22,11 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
             <textarea id="newReviewBody" name="newReviewBody" rows="5" cols="30" value={newReviewBody} onChange={event => setNewReviewBody(event.target.value)} required />
             <br />
             <label htmlFor="newReviewDesigner">And who made the game?</label>
+            <br />
             <input type="text" id="newReviewDesigner" name="newReviewDesigner" value={newReviewDesigner} onChange={event => setNewReviewDesigner(event.target.value)} required />
             <br />
             <label htmlFor="newReviewCategory">Lastly, which category best fits this game?</label>
+            <br />
             <select name="newReviewCategory" id="newReviewCategory" value={newReviewCategory} onChange={event => setNewReviewCategory(event.target.value)} required>
                 <option value="">choose a category</option>
                 <option value="strategy">Strategy</option>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../Styles/reviewView.css'
-import { addComment, deleteComment, commentUpvote, commentDownvote } from '../API';
+import { addComment, deleteComment } from '../API';
+import Votes from './SubComponents/Votes'
 
 const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, currentUser }) => {
     const [addingComment, setAddingComment] = useState(false);
@@ -12,7 +13,7 @@ const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, curr
                 <p>{viewingReview.title}</p>
                 <div><p>Review by : {viewingReview.owner}</p><p>Game by : {viewingReview.designer}</p></div>
                 <p>{viewingReview.review_body}</p>
-                <div id="reviewVoteBox"><span>&#128077;</span><span>{viewingReview.votes}</span><span>&#128078;</span></div>
+                <Votes review={viewingReview} />
             </section>
             <label htmlFor="commentForm">Comment :</label>
             {addingComment ? <p>submitting comment...</p> : <form onSubmit={event => addComment(event, viewingReview.review_id, setAddingComment, setReviewComments, currentUser, newCommentBody)} name="commentForm" id="commentForm">
@@ -26,7 +27,7 @@ const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, curr
                         <li key={comment.comment_id}>
                             <p>{comment.author}</p>
                             <p>{comment.body}</p>
-                            <div id="commentVoteBox"><span onClick={event => commentUpvote(event, comment)}>&#128077;</span><span>{comment.votes}</span ><span onClick={event => commentDownvote(event, comment)}>&#128078;</span></div>
+                            <Votes comment={comment} />
                             {currentUser.username === comment.author && <button onClick={event => deleteComment(event, comment.comment_id, setReviewComments, viewingReview.review_id)}>delete</button>}
                         </li>
                     )

@@ -19,3 +19,8 @@ code {
   padding: 0;
   margin: 0;
 }
+@media (min-width: 500px) {
+  body{
+    font-size: larger;
+  }
+}

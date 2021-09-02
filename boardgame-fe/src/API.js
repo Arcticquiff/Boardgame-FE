@@ -95,24 +95,21 @@ const deleteComment = async (event, comment_id, setReviewComments, review_id) =>
         console.log(err.response);
     }
 }
-const reviewUpvote = async (event, review) => {
-    event.preventDefault();
+const reviewUpvote = async (review) => {
     try {
         await gameApi.patch(`/reviews/${review.review_id}`, { inc_votes: 1 });
     } catch (err) {
         console.log(err.response);
-    }
-}
-const reviewDownvote = async (event, review) => {
-    event.preventDefault();
+    };
+};
+const reviewDownvote = async (review) => {
     try {
         await gameApi.patch(`/reviews/${review.review_id}`, { inc_votes: -1 });
     } catch (err) {
         console.log(err.response);
     }
 }
-const commentUpvote = async (event, comment) => {
-    event.preventDefault();
+const commentUpvote = async (comment) => {
     try {
         const response = await gameApi.patch(`/comments/${comment.comment_id}`, { inc_votes: 1 });
         console.log(response);
@@ -120,8 +117,7 @@ const commentUpvote = async (event, comment) => {
         console.log(err.response);
     }
 }
-const commentDownvote = async (event, comment) => {
-    event.preventDefault();
+const commentDownvote = async (comment) => {
     try {
         const response = await gameApi.patch(`/comments/${comment.comment_id}`, { inc_votes: -1 });
         console.log(response);

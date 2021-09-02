@@ -9,3 +9,16 @@
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+#paginationButtons{
+    margin-bottom: 15px;
+}
+@media (min-width: 500px) {
+    #reviewList{
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    .review{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+  }

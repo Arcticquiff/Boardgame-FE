@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { login, logout } from '../API';
 import '../Styles/header.css'
 
 const Header = ({ currentUser, setCurrentUser, loggedIn, setLoggedIn }) => {
+    const history = useHistory();
     const [newUser, setNewUser] = useState('');
     const [userNotFound, setUserNotFound] = useState(false);
     return (
@@ -11,8 +12,11 @@ const Header = ({ currentUser, setCurrentUser, loggedIn, setLoggedIn }) => {
             <Link to="/"><h1>Boardgamiacs</h1></Link>
             <form id="loginForm" onSubmit={loggedIn ?
                 event => logout(event, setCurrentUser, setLoggedIn) :
-                event => login(event, newUser, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound)}>
-                {loggedIn && <img src={currentUser.avatar_url} alt="User Avatar" />}
+                event => {
+                    login(event, newUser, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound)
+                    history.push("/")
+                }
+            }>
                 {loggedIn ?
                     <p>{currentUser.username}</p> :
                     <input id="loginUsername" type="text" placeholder="username" onChange={event => setNewUser(event.target.value)} value={newUser} required />}
