@@ -30,7 +30,7 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
             <br />
             <input type="url" name="newReviewPictureUrl" id="newReviewPictureUrl" value={newReviewPicture} onChange={event => setNewReviewPicture(event.target.value)} />
             <br />
-            <label htmlFor="newReviewCategory">Lastly, which category best fits this game? :</label>
+            <lable htmlFor="newReviewCategory">Lastly, which category best fits this game? :</lable>
             <br />
             <select name="newReviewCategory" id="newReviewCategory" value={newReviewCategory} onChange={event => setNewReviewCategory(event.target.value)} required>
                 <option value="">choose a category</option>

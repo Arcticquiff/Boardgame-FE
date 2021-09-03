@@ -28,7 +28,6 @@ const getReviews = async (category, setReviews, page, setLoading, setTotalReview
     if (category !== 'all') requestString += `&category=${category}`;
     try {
         const reviews = await gameApi.get(requestString);
-        console.log(reviews.data.reviews);
         setTotalReviews(reviews.data.total_count);
         setReviews(reviews.data.reviews);
         setLoading(false);
@@ -42,8 +41,7 @@ const addNewReview = async (event, newReview, setAddReviewLoading, setDisplayAdd
     let requestString = `/reviews?page=${page}&limit=5`
     if (category !== 'all') requestString += `&category=${category}`;
     try {
-        const responseReview = await gameApi.post('/reviews', newReview);
-        console.log(responseReview.data);
+        await gameApi.post('/reviews', newReview);
         setAddReviewLoading(false);
         setDisplayAddReview(false);
         setAddReviewSuccess(true);
@@ -52,7 +50,6 @@ const addNewReview = async (event, newReview, setAddReviewLoading, setDisplayAdd
         setReviews(newReviews.data.reviews);
         setLoading(false);
     } catch (err) {
-        console.log(err.response);
         setAddReviewLoading(false);
         setAddReviewFail(true);
     };
@@ -68,7 +65,6 @@ const deleteReview = async (event, review_id, category, setReviews, page, setLoa
         setReviews(newReviews.data.reviews);
         setLoading(false);
     } catch (err) {
-        console.log(err.response);
         setLoading(false);
     }
 };
@@ -78,7 +74,6 @@ const viewReview = async (event, review_id, setViewingReview, setLoading, setRev
     try {
         const review = await gameApi.get(`/reviews/${review_id}`);
         const reviewComments = await gameApi.get(`/reviews/${review_id}/comments`);
-        console.log(reviewComments.data.comments);
         setViewingReview(review.data.review);
         setReviewComments(reviewComments.data.comments);
         setLoading(false);
@@ -92,11 +87,9 @@ const addComment = async (event, review_id, setAddingComment, setReviewComments,
     try {
         await gameApi.post(`/reviews/${review_id}/comments`, { username: currentUser.username, body: newCommentBody });
         const reviewComments = await gameApi.get(`/reviews/${review_id}/comments`);
-        console.log(reviewComments.data.comments);
         setReviewComments(reviewComments.data.comments);
         setAddingComment(false);
     } catch (err) {
-        console.log(err.response);
         setAddingComment(false);
     }
 }
@@ -107,7 +100,6 @@ const deleteComment = async (event, comment_id, setReviewComments, review_id) =>
         const reviewComments = await gameApi.get(`/reviews/${review_id}/comments`);
         setReviewComments(reviewComments.data.comments);
     } catch (err) {
-        console.log(err.response);
     }
 }
 const reviewUpvote = async (review, setPlusOrMinus) => {
@@ -126,16 +118,14 @@ const reviewDownvote = async (review, setPlusOrMinus) => {
 }
 const commentUpvote = async (comment, setPlusOrMinus) => {
     try {
-        const response = await gameApi.patch(`/comments/${comment.comment_id}`, { inc_votes: 1 });
-        console.log(response);
+        gameApi.patch(`/comments/${comment.comment_id}`, { inc_votes: 1 });
     } catch (err) {
         setPlusOrMinus(0);
     }
 }
 const commentDownvote = async (comment, setPlusOrMinus) => {
     try {
-        const response = await gameApi.patch(`/comments/${comment.comment_id}`, { inc_votes: -1 });
-        console.log(response);
+        gameApi.patch(`/comments/${comment.comment_id}`, { inc_votes: -1 });
     } catch (err) {
         setPlusOrMinus(0);
     }
