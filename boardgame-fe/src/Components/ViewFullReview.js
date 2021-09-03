@@ -7,17 +7,19 @@ const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, curr
     const [addingComment, setAddingComment] = useState(false);
     const [newCommentBody, setNewCommentBody] = useState('');
     return (
-        <div id="singleReview">
-            <img src={viewingReview.review_img_url} alt="review snap" id="reviewPicture" />
-            <section>
-                <p>{viewingReview.title}</p>
-                <div>
-                    <p>Review by : {viewingReview.owner}</p>
-                    <p>Game by : {viewingReview.designer}</p>
-                </div>
-                <p>{viewingReview.review_body}</p>
-                <Votes review={viewingReview} />
-            </section>
+        <div id="reviewAndComments">
+            <div id="singleReview">
+                <img src={viewingReview.review_img_url} alt="review snap" id="reviewPicture" />
+                <section>
+                    <p>{viewingReview.title}</p>
+                    <div>
+                        <p>Review by : {viewingReview.owner}</p>
+                        <p>Game by : {viewingReview.designer}</p>
+                    </div>
+                    <p>{viewingReview.review_body}</p>
+                    <Votes review={viewingReview} />
+                </section>
+            </div>
             <label htmlFor="commentForm">Comment :</label>
             {addingComment ?
                 <p>submitting comment...</p> :
@@ -30,7 +32,7 @@ const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, curr
                 <ul className="comments">
                     {reviewComments.map(comment => {
                         return (
-                            <li key={comment.comment_id}>
+                            <li className="comment" key={comment.comment_id}>
                                 <p>{comment.author}</p>
                                 <p>{comment.body}</p>
                                 <Votes comment={comment} />
