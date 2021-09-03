@@ -14,6 +14,7 @@ const NavBar = ({ setCategory, currentUser, setReviews, setLoading, page, catego
                 () => {
                     setAddReviewSuccess(false);
                     setAddReviewFail(false);
+                    setDisplayCategorySelector(false);
                     setDisplayAddReview(current => !current);
                 }
             }>Add a review</p>
@@ -33,7 +34,10 @@ const NavBar = ({ setCategory, currentUser, setReviews, setLoading, page, catego
             {addReviewSuccess && <p>Great! thanks for your review</p>}
             {addReviewFail && <p>oops someone knocked the board over, try again</p>}
             <p id="categoryDisplayer" onClick={
-                () => setDisplayCategorySelector(current => !current)
+                () => {
+                    setDisplayAddReview(false);
+                    setDisplayCategorySelector(current => !current)
+                }
             }>Categories</p>
             {displayCategorySelector && <div id="categorySelect">
                 <Link to="/"><p onClick={() => setCategory('all')} value="all">All</p></Link>

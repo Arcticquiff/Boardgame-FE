@@ -2,16 +2,19 @@ import axios from 'axios';
 
 const gameApi = axios.create({ baseURL: 'https://tp-boardgame-api.herokuapp.com/api' });
 
-const login = async (event, username, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound) => {
+const login = async (event, username, setCurrentUser, setNewUser, setLoggedIn, setUserNotFound, setLoggingIn) => {
     event.preventDefault();
+    setLoggingIn(true);
     setUserNotFound(false);
     try {
         const user = await gameApi.get(`/users/${username}`);
         setCurrentUser(user.data.user);
         setLoggedIn(true);
         setNewUser('');
+        setLoggingIn(false);
     } catch (err) {
         setUserNotFound(true);
+        setLoggingIn(false);
     };
 };
 const logout = async (event, setCurrentUser, setLoggedIn) => {

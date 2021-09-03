@@ -1,4 +1,4 @@
-body {
+body, html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -7,20 +7,80 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #faae7b;
   color: #432371;
-}
-body, html {
-  overflow-x: hidden;
+  min-height: 100%;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.root{
+#root{
   padding: 0;
   margin: 0;
+  min-height: 100%;
+}
+#navBarAndReviewDisplay{
+  min-height: 100vh;
+}
+#addReviewDisplayer:hover {
+  cursor: pointer;
+}
+#categoryDisplayer:hover {
+  cursor: pointer;
+}
+nav{
+  background-color: #432371;
+  color: #faae7b;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+#categorySelect > a {
+  color: #faae7b;
+}
+#addReviewDisplayer{
+  margin-top: 0;
+}
+#singleReview{
+  padding: 20px
 }
 @media (min-width: 500px) {
   body{
     font-size: larger;
+  }
+}
+@media (min-width: 1000px) {
+  #navBarAndReviewDisplay{
+    display:flex;
+    grid-template-columns: 5%, 95%;
+  }
+  #addReviewDisplayer{
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #categoryDisplayer {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  nav{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    width: 25%;
+  }
+  nav > p {
+    text-align: left;
+  }
+  nav > form {
+    text-align: left;
+    align-items: flex-start;
+  }
+  #categorySelect > a {
+    text-align: left;
+  }
+  .reviewDisplay{
+    width: 75%;
+  }
+  #singleReview{
+    width: 75%;
   }
 }

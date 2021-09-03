@@ -6,26 +6,31 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
     const [newReviewBody, setNewReviewBody] = useState('');
     const [newReviewDesigner, setNewReviewDesigner] = useState('');
     const [newReviewCategory, setNewReviewCategory] = useState('');
+    const [newReviewPicture, setNewReviewPicture] = useState('');
     return (
         <form onSubmit={event => {
             const newReview = {
-                owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory
+                owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory, review_img_url: newReviewPicture || null
             };
             addNewReview(event, newReview, setAddReviewLoading, setDisplayAddReview, setAddReviewFail, setAddReviewSuccess, setReviews, setLoading, page, category)
         }}>
-            <label htmlFor="newReviewTitle">What's your review called?</label>
+            <label htmlFor="newReviewTitle">What's your review called? :</label>
             <br />
             <input type="text" id="newReviewTitle" name="newReviewTitle" value={newReviewTitle} onChange={event => setNewReviewTitle(event.target.value)} required />
             <br />
-            <label htmlFor="newReviewBody">So.... how was it?</label>
+            <label htmlFor="newReviewBody">So.... how was it? :</label>
             <br />
             <textarea id="newReviewBody" name="newReviewBody" rows="5" cols="30" value={newReviewBody} onChange={event => setNewReviewBody(event.target.value)} required />
             <br />
-            <label htmlFor="newReviewDesigner">And who made the game?</label>
+            <label htmlFor="newReviewDesigner">And who made the game? :</label>
             <br />
             <input type="text" id="newReviewDesigner" name="newReviewDesigner" value={newReviewDesigner} onChange={event => setNewReviewDesigner(event.target.value)} required />
             <br />
-            <label htmlFor="newReviewCategory">Lastly, which category best fits this game?</label>
+            <lable htmlFor="newReviewPictureUrl">add a picture if you like :</lable>
+            <br />
+            <input type="url" name="newReviewPictureUrl" id="newReviewPictureUrl" value={newReviewPicture} onChange={event => setNewReviewPicture(event.target.value)} />
+            <br />
+            <label htmlFor="newReviewCategory">Lastly, which category best fits this game? :</label>
             <br />
             <select name="newReviewCategory" id="newReviewCategory" value={newReviewCategory} onChange={event => setNewReviewCategory(event.target.value)} required>
                 <option value="">choose a category</option>

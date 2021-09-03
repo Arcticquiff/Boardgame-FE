@@ -7,7 +7,7 @@ const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, curr
     const [addingComment, setAddingComment] = useState(false);
     const [newCommentBody, setNewCommentBody] = useState('');
     return (
-        <div>
+        <div id="singleReview">
             <img src={viewingReview.review_img_url} alt="review snap" id="reviewPicture" />
             <section>
                 <p>{viewingReview.title}</p>
