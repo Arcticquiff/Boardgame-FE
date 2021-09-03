@@ -59,7 +59,7 @@ function App() {
         <main id="notLoggedIn">
           <p id="loggedOutText">
             <span id="boldStart">Hey welcome to BoardGamiacs, </span>
-            home of reviews for games that you've never even heard of! Don't google them though, you'll challenge the whole legitimacy of this website. If you don't know or have a username, feel free to use "tickle122" to log in, don't hold it against me, I didn't generate the names.
+            home of reviews for games that you've never even heard of! Don't google them though, you'll challenge the whole legitimacy ogif this website. If you don't know or have a username, feel free to use "tickle122" to log in, don't hold it against me, I didn't generate the names.
           </p>
         </main>}
     </div>
