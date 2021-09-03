@@ -32,4 +32,7 @@
   #notLoggedIn{
     margin-top: 10%;
   }
+  #reviewAndComments{
+    width: 75%;
+  }
 }
