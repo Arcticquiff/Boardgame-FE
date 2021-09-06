@@ -14,7 +14,7 @@
   text-align: center;
 }
 #loggedOutText{
-  width: 50%;
+  width: 60%;
   margin: 0;
 }
 #reviewAndComments{
@@ -28,10 +28,10 @@
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-@media (min-width: 1000px) {
-  #notLoggedIn{
+#notLoggedIn{
     margin-top: 10%;
-  }
+}
+@media (min-width: 1000px) {
   #reviewAndComments{
     width: 75%;
   }
