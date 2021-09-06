@@ -89,11 +89,13 @@ li > button {
 }
 #loadMessage{
   text-align: center;
-  width: 70%;
 }
 @media (min-width: 500px) {
   body{
     font-size: larger;
+  }
+  #loadMessage{
+    width: 75%;
   }
 }
 @media (min-width: 1000px) {

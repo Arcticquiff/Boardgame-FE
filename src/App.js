@@ -48,7 +48,7 @@ function App() {
                   setReviewComments={setReviewComments} />}
             </Route>
             <Route exact path="/viewFullReview">
-              {loading ? <p>loading...</p> :
+              {loading ? <p id="loadMessage">loading...</p> :
                 <ViewFullReview
                   viewingReview={viewingReview}
                   reviewComments={reviewComments}
