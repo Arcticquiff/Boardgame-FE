@@ -6,6 +6,7 @@ import Votes from './SubComponents/Votes'
 const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, currentUser }) => {
     const [addingComment, setAddingComment] = useState(false);
     const [newCommentBody, setNewCommentBody] = useState('');
+    const [deletingComment, setDeletingComment] = useState(false);
     return (
         <div id="reviewAndComments">
             <div id="singleReview">
@@ -28,20 +29,21 @@ const ViewFullReview = ({ viewingReview, reviewComments, setReviewComments, curr
                     <br />
                     <button type="submit">Add comment</button>
                 </form>}
-            {reviewComments.length > 0 ?
-                <ul className="comments">
-                    {reviewComments.map(comment => {
-                        return (
-                            <li className="comment" key={comment.comment_id}>
-                                <p>{comment.author}</p>
-                                <p>{comment.body}</p>
-                                <Votes comment={comment} />
-                                {currentUser.username === comment.author && <button onClick={event => deleteComment(event, comment.comment_id, setReviewComments, viewingReview.review_id)}>delete</button>}
-                            </li>
-                        )
-                    })}
-                </ul> :
-                <p>Nothing yet boi, feel free to add a review though!</p>}
+            {deletingComment ? <p>Loading...</p> :
+                reviewComments.length > 0 ?
+                    <ul className="comments">
+                        {reviewComments.map(comment => {
+                            return (
+                                <li className="comment" key={comment.comment_id}>
+                                    <p>{comment.author}</p>
+                                    <p>{comment.body}</p>
+                                    <Votes comment={comment} />
+                                    {currentUser.username === comment.author && <button onClick={event => deleteComment(event, comment.comment_id, setReviewComments, viewingReview.review_id, setDeletingComment)}>delete</button>}
+                                </li>
+                            )
+                        })}
+                    </ul> :
+                    <p>Nothing yet boi, feel free to add a review though!</p>}
         </div>
     );
 };

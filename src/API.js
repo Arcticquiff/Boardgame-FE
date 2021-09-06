@@ -93,13 +93,16 @@ const addComment = async (event, review_id, setAddingComment, setReviewComments,
         setAddingComment(false);
     }
 }
-const deleteComment = async (event, comment_id, setReviewComments, review_id) => {
+const deleteComment = async (event, comment_id, setReviewComments, review_id, setDeletingComment) => {
     event.preventDefault();
+    setDeletingComment(true);
     try {
         await gameApi.delete(`/comments/${comment_id}`)
         const reviewComments = await gameApi.get(`/reviews/${review_id}/comments`);
         setReviewComments(reviewComments.data.comments);
+        setDeletingComment(false);
     } catch (err) {
+        setDeletingComment(false);
     }
 }
 const reviewUpvote = async (review, setPlusOrMinus) => {
