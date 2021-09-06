@@ -41,6 +41,12 @@ nav{
 #singleReview{
   padding: 20px
 }
+.comments{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .comment {
   background-color: #009797;
   padding:10px;
@@ -48,9 +54,42 @@ nav{
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 5px;
+  width:50%;
 }
 .comment > p {
   margin-top: 3px;
+}
+button{
+  display:inline-block;
+  padding:0.7em 1.4em;
+  margin:0 0.3em 0.3em 0;
+  border-radius:5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  text-transform:uppercase;
+  font-weight:400;
+  color:#FFFFFF;
+  background-color:#22577A;
+  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  text-align:center;
+  position:relative;
+  }
+button:active{
+  top:0.1em;
+  }
+li > button {
+  margin-top: 10px;
+}
+#loginButton{
+  margin-left: 5px;
+}
+#addReviewForm > button{
+  margin-top: 5px;
+}
+#loadMessage{
+  text-align: center;
+  width: 70%;
 }
 @media (min-width: 500px) {
   body{
@@ -93,5 +132,22 @@ nav{
   }
   #singleReview{
     width: 75%;
+  }
+}
+@media (max-width: 1000px){
+  #singleReview{
+    width: 90%;
+  }
+  nav {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  #categoryDisplayer{
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 600px){
+  .comment{
+    width:80%;
   }
 }

@@ -26,10 +26,19 @@ git clone <url>,
 cd Boardgame-FE
 ```
 ```sh
-npm i, npm i react-router-dom 
+npm i
+```
+```sh
+npm i axios
 ```
 ```sh
 npm i react-router-dom 
+```
+
+## To start the dev server run
+
+```sh
+npm start
 ```
 
 ## Author

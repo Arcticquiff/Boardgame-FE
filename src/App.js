@@ -30,10 +30,11 @@ function App() {
             setReviews={setReviews}
             setLoading={setLoading}
             page={page}
-            category={category} />
+            category={category}
+            setPage={setPage} />
           <Switch>
             <Route exact path="/">
-              {loading ? <p>loading...</p> :
+              {loading ? <p id="loadMessage">loading...</p> :
                 <ReviewDisplay
                   totalReviews={totalReviews}
                   reviews={reviews}

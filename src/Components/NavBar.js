@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AddReviewPage } from './SubComponents/SubComponentExporter'
 
-const NavBar = ({ setCategory, currentUser, setReviews, setLoading, page, category }) => {
+const NavBar = ({ setCategory, currentUser, setReviews, setLoading, page, category, setPage }) => {
     const [displayCategorySelector, setDisplayCategorySelector] = useState(false);
     const [displayAddReview, setDisplayAddReview] = useState(false);
     const [addReviewLoading, setAddReviewLoading] = useState(false);
@@ -40,14 +40,38 @@ const NavBar = ({ setCategory, currentUser, setReviews, setLoading, page, catego
                 }
             }>Categories</p>
             {displayCategorySelector && <div id="categorySelect">
-                <Link to="/"><p onClick={() => setCategory('all')} value="all">All</p></Link>
-                <Link to="/"><p onClick={() => setCategory('strategy')} value="strategy">Strategy</p></Link>
-                <Link to="/"><p onClick={() => setCategory('hidden-roles')} value="hidden-roles">Hidden roles</p></Link>
-                <Link to="/"><p onClick={() => setCategory('dexterity')} value="dexterity">Dexterity</p></Link>
-                <Link to="/"><p onClick={() => setCategory('push-your-luck')} value="push-your-luck">Push your luck</p></Link>
-                <Link to="/"><p onClick={() => setCategory('roll-and-write')} value="roll-and-write">Roll and Write</p></Link>
-                <Link to="/"><p onClick={() => setCategory('deck-building')} value="deck-building">Deck building</p></Link>
-                <Link to="/"><p onClick={() => setCategory('engine-building')} value="engine-building">Engine building</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('all');
+                    setPage(1);
+                }} value="all">All</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('strategy');
+                    setPage(1);
+                }} value="strategy">Strategy</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('hidden-roles');
+                    setPage(1);
+                }} value="hidden-roles">Hidden roles</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('dexterity');
+                    setPage(1);
+                }} value="dexterity">Dexterity</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('push-your-luck');
+                    setPage(1);
+                }} value="push-your-luck">Push your luck</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('roll-and-write');
+                    setPage(1);
+                }} value="roll-and-write">Roll and Write</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('deck-building');
+                    setPage(1);
+                }} value="deck-building">Deck building</p></Link>
+                <Link to="/"><p onClick={() => {
+                    setCategory('engine-building');
+                    setPage(1);
+                }} value="engine-building">Engine building</p></Link>
             </div>}
         </nav>
     );

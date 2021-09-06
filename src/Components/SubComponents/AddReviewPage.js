@@ -8,7 +8,7 @@ const AddReviewPage = ({ currentUser, setAddReviewLoading, setDisplayAddReview, 
     const [newReviewCategory, setNewReviewCategory] = useState('');
     const [newReviewPicture, setNewReviewPicture] = useState('');
     return (
-        <form onSubmit={event => {
+        <form id="addReviewForm" onSubmit={event => {
             const newReview = {
                 owner: currentUser.username, title: newReviewTitle, review_body: newReviewBody, designer: newReviewDesigner, category: newReviewCategory, review_img_url: newReviewPicture || null
             };
